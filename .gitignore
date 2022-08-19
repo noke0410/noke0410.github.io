@@ -1,0 +1,8 @@
+.DS_Store # 不推送 .DS_Store 檔案
+Thumbs.db # 不推送 Thumbs.db 檔案
+db.json # 不推送 db.json 檔案
+*.log # 不推送副檔名為 .log 的檔案（星號為萬用字元，代表任何數目的字元）
+node_modules/ # 不推送目錄 node_modules 與其內檔案
+public/ # 不推送目錄 public 與其內檔案
+.deploy*/ # 不推送開頭為 .deploy 的目錄
+_multiconfig.yml # 不推送 _multiconfig.yml 檔案
