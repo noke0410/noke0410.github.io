@@ -201,7 +201,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-08-27 00:19:28 / 修改時間：01:43:00" itemprop="dateCreated datePublished" datetime="2022-08-27T00:19:28+08:00">2022-08-27</time>
+      <time title="創建時間：2022-08-27 00:19:28 / 修改時間：01:51:29" itemprop="dateCreated datePublished" datetime="2022-08-27T00:19:28+08:00">2022-08-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,7 +256,11 @@
 <td align="left">Blog 站台的檔案</td>
 </tr>
 </tbody></table>
-<h2 id="同時更新及備份-hexo"><a href="#同時更新及備份-hexo" class="headerlink" title="同時更新及備份 hexo"></a>同時更新及備份 hexo</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd 你的部落格絕對路徑</span><br><span class="line">git add .</span><br><span class="line">git commit --amend --no-edit</span><br><span class="line">git push -f</span><br><span class="line"></span><br><span class="line">cd 你的部落格絕對路徑</span><br><span class="line">hexo cl # 刪除已經生成的 public 資料夾</span><br><span class="line">hexo g -d # 根據新內容生成 public 資料夾，並部署上線</span><br></pre></td></tr></table></figure>
+<h2 id="同時更新及備份-hexo"><a href="#同時更新及備份-hexo" class="headerlink" title="同時更新及備份 hexo"></a>同時更新及備份 hexo</h2><p>建立一個指令檔(depoly.ps1)，將以下內容複製到檔案中儲存。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 你的部落格絕對路徑</span><br><span class="line">git add .</span><br><span class="line">git commit --amend --no-edit</span><br><span class="line">git push -f</span><br><span class="line">hexo cl <span class="comment"># 刪除已經生成的 public 資料夾</span></span><br><span class="line">hexo g -d <span class="comment"># 根據新內容生成 public 資料夾，並部署上線</span></span><br></pre></td></tr></table></figure>
+
+<p>完成之後，我們就可以透過執行以下指令達到發佈文章的同時順便進行備份的目的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ powershell -file depoly.ps1</span><br></pre></td></tr></table></figure>
 
       
     </div>
