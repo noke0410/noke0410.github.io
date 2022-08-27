@@ -201,7 +201,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-08-27 00:19:28 / 修改時間：15:40:02" itemprop="dateCreated datePublished" datetime="2022-08-27T00:19:28+08:00">2022-08-27</time>
+      <time title="創建時間：2022-08-27 00:19:28 / 修改時間：16:18:41" itemprop="dateCreated datePublished" datetime="2022-08-27T00:19:28+08:00">2022-08-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -238,13 +238,14 @@
 
 <p>依序執行到這一個步驟結束，基本上就已經建立好一個附帶<a href="/Hexo/20220818/1243066710/">Hello World</a>最基礎的 Blog 了，接下來我們就可以進一步針對 <font color="red">_config.yml</font> 進行網站的設定。</p>
 <h2 id="網站設定"><a href="#網站設定" class="headerlink" title="網站設定"></a>網站設定</h2><p>依據<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/configuration">官方文件</a>所述，可以針對網站的 title(網站標題)、description(網站的描述)、keywords(網站的關鍵字)、language(網站使用的語言)、author(作者)、theme(網站使用的主題名稱)以及 deploy(佈署設定)等等諸多不同類型的屬性進行設定。</p>
+<h2 id="網站主題-Theme"><a href="#網站主題-Theme" class="headerlink" title="網站主題(Theme)"></a>網站主題(Theme)</h2><p>挑選一個合適的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主題</a>讓人感覺彷彿皇帝選妃一般，多得令人感到眼花撩亂不知該如何下手，經過一輪調查最終選定<a target="_blank" rel="noopener" href="https://theme-next.js.org/">NexT</a>，好處是 NexT 本身就提供四種主題風格可以任君挑選，並且支援深色模式及多重語言，完全深得工程師的心，假設今天突然想換一個風格的時候只要在設定檔調整一下馬上就煥然一新。</p>
 <h2 id="在-GitHub-Pages-上部署-Hexo"><a href="#在-GitHub-Pages-上部署-Hexo" class="headerlink" title="在 GitHub Pages 上部署 Hexo"></a>在 GitHub Pages 上部署 Hexo</h2><p>一樣，我們可以參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/github-pages">官方文件</a>進行設定。但在開始設定之前，必須先在 GitHub 建立好名為{username}.github.io 的 Repository，設定完畢之後就可以參考<a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment">一鍵部署</a>的部份去修改 <font color="red">_config.yml</font>。</p>
 <p>由於我希望除了 Blog 的功能之外，還要做到可以將整份 Hexo 備份到同一個 Repository，所以針對這個 Repository 的 Branch 做了一個簡單的規劃如下：</p>
 <table>
 <thead>
 <tr>
-<th align="left">Branch</th>
-<th align="left">作用</th>
+<th align="left">分支(Branch)</th>
+<th align="left">分支功用</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -253,14 +254,14 @@
 </tr>
 <tr>
 <td align="left">gh-pages</td>
-<td align="left">Blog 站台的檔案</td>
+<td align="left">GitHub Pages 使用</td>
 </tr>
 </tbody></table>
 <h2 id="同時更新及備份-hexo"><a href="#同時更新及備份-hexo" class="headerlink" title="同時更新及備份 hexo"></a>同時更新及備份 hexo</h2><p>建立一個指令檔(depoly.ps1)，將以下內容複製到檔案中儲存。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 你的部落格絕對路徑</span><br><span class="line">git add .</span><br><span class="line">git commit <span class="literal">--amend</span> <span class="literal">--no-edit</span></span><br><span class="line">git push <span class="operator">-f</span></span><br><span class="line">hexo cl <span class="comment"># 刪除已經生成的 public 資料夾</span></span><br><span class="line">hexo d <span class="literal">-g</span> <span class="comment"># 根據新內容生成 public 資料夾，並部署上線</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &#123;absolute_path&#125;</span><br><span class="line">git add .</span><br><span class="line">git commit <span class="literal">--amend</span> <span class="literal">--no-edit</span></span><br><span class="line">git push <span class="operator">-f</span></span><br><span class="line">hexo cl <span class="comment"># 刪除已經生成的 public 資料夾</span></span><br><span class="line">hexo d <span class="literal">-g</span> <span class="comment"># 根據新內容生成 public 資料夾，並部署上線</span></span><br></pre></td></tr></table></figure>
 
 <p>完成之後，我們就可以透過執行以下指令達到發佈文章的同時順便進行備份的目的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ powershell -file depoly.ps1</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> powershell <span class="operator">-file</span> depoly.ps1</span><br></pre></td></tr></table></figure>
 
       
     </div>
