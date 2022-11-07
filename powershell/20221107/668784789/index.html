@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"noke0410.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。 123456789照片 &gt; JPG  &gt; yyyy   &gt; yyyy_mm_dd &gt; RAW  &gt; yyyy   &gt; yyyy_mm_dd影片 &gt; yyyy_mm_dd">
+    <meta name="description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。 | 照片 ||  &gt; JPG ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||  &gt; RAW ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PowerShell照片整理法">
 <meta property="og:url" content="https://noke0410.github.io/powershell/20221107/668784789/">
 <meta property="og:site_name" content="不及格筆記">
-<meta property="og:description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。 123456789照片 &gt; JPG  &gt; yyyy   &gt; yyyy_mm_dd &gt; RAW  &gt; yyyy   &gt; yyyy_mm_dd影片 &gt; yyyy_mm_dd">
+<meta property="og:description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。 | 照片 ||  &gt; JPG ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||  &gt; RAW ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-07T14:54:46.000Z">
-<meta property="article:modified_time" content="2022-11-07T15:05:12.612Z">
+<meta property="article:modified_time" content="2022-11-07T15:08:37.110Z">
 <meta property="article:author" content="Noke Chen">
 <meta property="article:tag" content="PowerShell">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-07 22:54:46 / Modified: 23:05:12" itemprop="dateCreated datePublished" datetime="2022-11-07T22:54:46+08:00">2022-11-07</time>
+      <time title="Created: 2022-11-07 22:54:46 / Modified: 23:08:37" itemprop="dateCreated datePublished" datetime="2022-11-07T22:54:46+08:00">2022-11-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,7 +232,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">照片</span><br><span class="line"> &gt; JPG</span><br><span class="line">  &gt; yyyy</span><br><span class="line">   &gt; yyyy_mm_dd</span><br><span class="line"> &gt; RAW</span><br><span class="line">  &gt; yyyy</span><br><span class="line">   &gt; yyyy_mm_dd</span><br><span class="line">影片</span><br><span class="line"> &gt; yyyy_mm_dd</span><br></pre></td></tr></table></figure>
+<p>| 照片 |<br>|  &gt; JPG |<br>|   &gt; yyyy |<br>|    &gt; yyyy_mm_dd |<br>|  &gt; RAW |<br>|   &gt; yyyy |<br>|    &gt; yyyy_mm_dd |<br>| 影片 |<br>|  &gt; yyyy_mm_dd |</p>
 
     </div>
 
