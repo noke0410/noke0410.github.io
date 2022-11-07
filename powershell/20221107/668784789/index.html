@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"noke0410.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。 | 照片 ||  &gt; JPG ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||  &gt; RAW ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||">
+    <meta name="description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。一直以來都習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。    根目錄 子目錄    照片 JPG \ yyyy \ yyyy_mm_dd   照片 RAW \ yyyy \ yyyy_mm_dd   影片 yyyy_mm_dd   然而，如此一來就變成非常的費">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PowerShell照片整理法">
+<meta property="og:title" content="PowerShell影像整理法">
 <meta property="og:url" content="https://noke0410.github.io/powershell/20221107/668784789/">
 <meta property="og:site_name" content="不及格筆記">
-<meta property="og:description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。 | 照片 ||  &gt; JPG ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||  &gt; RAW ||   &gt; yyyy ||    &gt; yyyy_mm_dd ||">
+<meta property="og:description" content="自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。一直以來都習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。    根目錄 子目錄    照片 JPG \ yyyy \ yyyy_mm_dd   照片 RAW \ yyyy \ yyyy_mm_dd   影片 yyyy_mm_dd   然而，如此一來就變成非常的費">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-07T14:54:46.000Z">
-<meta property="article:modified_time" content="2022-11-07T15:08:37.110Z">
+<meta property="article:modified_time" content="2022-11-07T15:41:22.037Z">
 <meta property="article:author" content="Noke Chen">
 <meta property="article:tag" content="PowerShell">
 <meta name="twitter:card" content="summary">
@@ -39,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://noke0410.github.io/powershell/20221107/668784789/","path":"powershell/20221107/668784789/","title":"PowerShell照片整理法"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://noke0410.github.io/powershell/20221107/668784789/","path":"powershell/20221107/668784789/","title":"PowerShell影像整理法"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>PowerShell照片整理法 | 不及格筆記</title>
+<title>PowerShell影像整理法 | 不及格筆記</title>
   
 
 
@@ -192,12 +192,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="PowerShell照片整理法 | 不及格筆記">
+      <meta itemprop="name" content="PowerShell影像整理法 | 不及格筆記">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          PowerShell照片整理法
+          PowerShell影像整理法
         </h1>
 
         <div class="post-meta-container">
@@ -209,7 +209,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-07 22:54:46 / Modified: 23:08:37" itemprop="dateCreated datePublished" datetime="2022-11-07T22:54:46+08:00">2022-11-07</time>
+      <time title="Created: 2022-11-07 22:54:46 / Modified: 23:41:22" itemprop="dateCreated datePublished" datetime="2022-11-07T22:54:46+08:00">2022-11-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -231,9 +231,29 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。</p>
-<p>| 照片 |<br>|  &gt; JPG |<br>|   &gt; yyyy |<br>|    &gt; yyyy_mm_dd |<br>|  &gt; RAW |<br>|   &gt; yyyy |<br>|    &gt; yyyy_mm_dd |<br>| 影片 |<br>|  &gt; yyyy_mm_dd |</p>
-
+        <p>自從拍照開始儲存Raw檔後，整理照片&#x2F;影片就變成一件非常麻煩的事情。一直以來都習慣先手動將照片從記憶卡中複製出來，並依據拍攝日期個別建立資料夾存放，然後再依據下面的結構備份至NAS裡。</p>
+<table>
+<thead>
+<tr>
+<th>根目錄</th>
+<th>子目錄</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>照片</td>
+<td>JPG \ yyyy \ yyyy_mm_dd</td>
+</tr>
+<tr>
+<td>照片</td>
+<td>RAW \ yyyy \ yyyy_mm_dd</td>
+</tr>
+<tr>
+<td>影片</td>
+<td>yyyy_mm_dd</td>
+</tr>
+</tbody></table>
+<p>然而，如此一來就變成非常的費時又秏工，身為一個<del>懶惰的</del>挨踢人怎麼可能允許長時間都是如此的人工作業，想睡時還會不小心弄錯。自從聽到Nokia把「科技始終來自於人性」這句話拿來當廣告的經典slogan之後，就一直被<del>懶人</del>我奉為圭臬，心中一直想著有朝一日一定要寫一個好用的小工具，後來接觸到<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/powershell/scripting/overview?view=powershell-7.2">PowerShell</a>這好用的東西，於是就有了底下這段Script幫我解決整理影像上的困擾。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sourcePath</span> = <span class="string">&quot;C:\DCIM&quot;</span></span><br><span class="line"><span class="variable">$targetBasePath</span> = <span class="string">&quot;<span class="variable">$env:USERPROFILE</span>\影像整理&quot;</span></span><br><span class="line"><span class="variable">$jpgFile</span> = <span class="string">&quot;*.jpg&quot;</span></span><br><span class="line"><span class="variable">$rawFile</span> = <span class="string">&quot;*.cr3&quot;</span></span><br><span class="line"><span class="variable">$videoFile</span> = <span class="string">&quot;*.mp4&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-ChildItem</span> <span class="literal">-Path</span> <span class="variable">$sourcePath</span> | <span class="built_in">ForEach-Object</span> &#123;</span><br><span class="line">    <span class="variable">$date</span> = <span class="string">&quot;&#123;0:yyyy_MM_dd&#125;&quot;</span> <span class="operator">-f</span> <span class="variable">$_</span>.LastWriteTime</span><br><span class="line">    <span class="variable">$year</span> = <span class="variable">$date</span>.Substring(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#處理JPG Files</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_</span>.Extension <span class="operator">-like</span> <span class="variable">$jpgFile</span>) &#123;</span><br><span class="line">        <span class="variable">$targetPath</span> = <span class="string">&quot;<span class="variable">$targetBasePath</span>\照片\JPG\<span class="variable">$year</span>\<span class="variable">$date</span>&quot;</span></span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="variable">$targetPath</span>)) &#123;</span><br><span class="line">            mkdir <span class="literal">-Path</span> <span class="variable">$targetPath</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span>)) &#123;</span><br><span class="line">            <span class="built_in">Move-Item</span> <span class="literal">-Path</span> <span class="variable">$_</span>.FullName <span class="literal">-Destination</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">            <span class="string">&quot;Move <span class="variable">$_</span> To <span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#處理Raw Files</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_</span>.Extension <span class="operator">-like</span> <span class="variable">$rawFile</span>) &#123;</span><br><span class="line">        <span class="variable">$targetPath</span> = <span class="string">&quot;<span class="variable">$targetBasePath</span>\照片\RAW\<span class="variable">$year</span>\<span class="variable">$date</span>&quot;</span></span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="variable">$targetPath</span>)) &#123;</span><br><span class="line">            mkdir <span class="literal">-Path</span> <span class="variable">$targetPath</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span>)) &#123;</span><br><span class="line">            <span class="built_in">Move-Item</span> <span class="literal">-Path</span> <span class="variable">$_</span>.FullName <span class="literal">-Destination</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">            <span class="string">&quot;Move <span class="variable">$_</span> To <span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#處理Video Files</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_</span>.Extension <span class="operator">-like</span> <span class="variable">$videoFile</span>) &#123;</span><br><span class="line">        <span class="variable">$targetPath</span> = <span class="string">&quot;<span class="variable">$targetBasePath</span>\影片\<span class="variable">$date</span>&quot;</span></span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="variable">$targetPath</span>)) &#123;</span><br><span class="line">            mkdir <span class="literal">-Path</span> <span class="variable">$targetPath</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span>)) &#123;</span><br><span class="line">            <span class="built_in">Move-Item</span> <span class="literal">-Path</span> <span class="variable">$_</span>.FullName <span class="literal">-Destination</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">            <span class="string">&quot;Move <span class="variable">$_</span> To <span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">explorer.exe <span class="variable">$targetBasePath</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
