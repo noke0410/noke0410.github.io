@@ -124,7 +124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -135,7 +135,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -164,6 +164,86 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://noke0410.github.io/powershell/20230905/0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Noke Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不及格筆記">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 不及格筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/powershell/20230905/0/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-09-05 21:54:16 / Modified: 22:13:08" itemprop="dateCreated datePublished" datetime="2023-09-05T21:54:16+08:00">2023-09-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/powershell/" itemprop="url" rel="index"><span itemprop="name">PowerShell</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>自從微軟很好心地將中文版Windows預設輸入法設定為作業系統內建的「微軟新注音」輸入法後，導致幾乎無論是要做什麼事情都要先切換為英數再開始輸入指令，實在不勝其擾。還好皇天不負苦心人，讓我找到可以快速設定的方式！保哥提供了一個<a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2020/03/19/Devs-must-setup-multi-language-input-method">多語言輸入法設定技巧：使用 Windows PowerShell 快速建立</a>的方法(偉哉保哥<del>善哉保哥</del>)，但每每換一台電腦就要重新Google一次，最終還是決定自行收編了。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$UserLanguageList</span> = <span class="built_in">New-WinUserLanguageList</span> <span class="literal">-Language</span> <span class="string">&quot;zh-TW&quot;</span></span><br><span class="line"><span class="variable">$UserLanguageList</span>.Add(<span class="string">&quot;en-US&quot;</span>)</span><br><span class="line"><span class="built_in">Set-WinUserLanguageList</span> <span class="literal">-LanguageList</span> <span class="variable">$UserLanguageList</span> <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Set-WinDefaultInputMethodOverride</span> <span class="literal">-InputTip</span> <span class="string">&quot;0409:00000409&quot;</span> <span class="comment">#將預設輸入法改成以 ENG (英文) 為主要輸入法！</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -277,7 +357,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/powershell/20221121/1974820602/" class="post-title-link" itemprop="url">PowerShell 影像整理法(小改版)</a>
+          <a href="/powershell/20221121/1974820602/" class="post-title-link" itemprop="url">PowerShell 影像整理法(Ver. 20221121)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -295,7 +375,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 21:56:27" itemprop="dateModified" datetime="2023-01-04T21:56:27+08:00">2023-01-04</time>
+      <time title="Modified: 2023-09-05 22:00:01" itemprop="dateModified" datetime="2023-09-05T22:00:01+08:00">2023-09-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
