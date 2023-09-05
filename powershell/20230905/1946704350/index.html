@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"noke0410.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="時隔九個月，懶人照片整理法第二次改版了…因為照片主要是放在NAS上不是本機(也不想設定網路磁碟機)，又常常不記得是否已經同步過記憶卡裡的檔案(人越老記性越差)，只好繼續改版。 不囉嗦，改版資訊如下：  增加網路磁碟機路徑的判斷 增加是否有同步檔案的判斷  123456789101112131415161718192021222324252627282930313233343536373839404">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PowerShell 影像整理法(再改版)">
+<meta property="og:url" content="https://noke0410.github.io/powershell/20230905/1946704350/">
+<meta property="og:site_name" content="不及格筆記">
+<meta property="og:description" content="時隔九個月，懶人照片整理法第二次改版了…因為照片主要是放在NAS上不是本機(也不想設定網路磁碟機)，又常常不記得是否已經同步過記憶卡裡的檔案(人越老記性越差)，只好繼續改版。 不囉嗦，改版資訊如下：  增加網路磁碟機路徑的判斷 增加是否有同步檔案的判斷  123456789101112131415161718192021222324252627282930313233343536373839404">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-05T13:15:42.000Z">
+<meta property="article:modified_time" content="2023-09-05T13:34:24.148Z">
+<meta property="article:author" content="Noke Chen">
+<meta property="article:tag" content="PowerShell">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://noke0410.github.io/powershell/20230905/1946704350/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://noke0410.github.io/powershell/20230905/1946704350/","path":"powershell/20230905/1946704350/","title":"PowerShell 影像整理法(再改版)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PowerShell 影像整理法(再改版) | 不及格筆記</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">不及格筆記</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Noke Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://noke0410.github.io/powershell/20230905/1946704350/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Noke Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不及格筆記">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="PowerShell 影像整理法(再改版) | 不及格筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PowerShell 影像整理法(再改版)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-09-05 21:15:42 / Modified: 21:34:24" itemprop="dateCreated datePublished" datetime="2023-09-05T21:15:42+08:00">2023-09-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/powershell/" itemprop="url" rel="index"><span itemprop="name">PowerShell</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>時隔九個月，懶人照片整理法第二次改版了…因為照片主要是放在NAS上不是本機(也不想設定網路磁碟機)，又常常不記得是否已經同步過記憶卡裡的檔案(人越老記性越差)，只好繼續改版。</p>
+<p>不囉嗦，改版資訊如下：</p>
+<ul>
+<li>增加網路磁碟機路徑的判斷</li>
+<li>增加是否有同步檔案的判斷</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sourcePath</span> = <span class="string">&quot;D:\DCIM\100EOS_R&quot;</span></span><br><span class="line"><span class="variable">$targetBasePath</span> = <span class="string">&quot;<span class="variable">$env:USERPROFILE</span>\影像整理&quot;</span></span><br><span class="line"><span class="variable">$smbPath</span> = <span class="string">&quot;\\SmbPath\影像記錄&quot;</span></span><br><span class="line"><span class="variable">$syncFiles</span> = <span class="number">0</span></span><br><span class="line"><span class="variable">$keepSourceFile</span> = <span class="variable">$true</span></span><br><span class="line"><span class="variable">$jpgFiles</span> = <span class="string">&quot;.jpg&quot;</span>, <span class="string">&quot;.jpeg&quot;</span></span><br><span class="line"><span class="variable">$rawFiles</span> = <span class="string">&quot;.cr2&quot;</span>, <span class="string">&quot;.cr3&quot;</span></span><br><span class="line"><span class="variable">$videoFiles</span> = <span class="string">&quot;.mp4&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#定義訊息函式(https://ss64.com/ps/messagebox.html)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show_message</span></span> &#123;</span><br><span class="line">    <span class="keyword">param</span>(</span><br><span class="line">        <span class="variable">$msgBody</span> = <span class="string">&#x27;message&#x27;</span></span><br><span class="line">       ,<span class="variable">$msgTitle</span> = <span class="string">&#x27;title&#x27;</span></span><br><span class="line">       ,<span class="variable">$msgButton</span> = <span class="string">&#x27;OK&#x27;</span></span><br><span class="line">       ,<span class="variable">$msgImage</span> = <span class="string">&#x27;None&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="variable">$Result</span> = [<span class="type">System.Windows.MessageBox</span>]::Show(<span class="variable">$msgBody</span>, <span class="variable">$msgTitle</span>, <span class="variable">$msgButton</span>, <span class="variable">$msgImage</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$Result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#定義搬檔函式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">move_file</span></span> &#123;</span><br><span class="line">    <span class="keyword">param</span>(<span class="variable">$SourceFile</span>, <span class="variable">$TargetFile</span>, <span class="variable">$KeepSource</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">Test-Path</span> <span class="literal">-LiteralPath</span> (<span class="built_in">Split-Path</span> <span class="literal">-LiteralPath</span> <span class="variable">$targetFile</span>)) <span class="operator">-eq</span> <span class="variable">$false</span>) &#123;</span><br><span class="line">        mkdir <span class="literal">-Path</span> <span class="variable">$targetPath</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">Test-Path</span> <span class="literal">-LiteralPath</span> <span class="variable">$targetFile</span>) <span class="operator">-eq</span> <span class="variable">$false</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$keepSource</span> <span class="operator">-eq</span> <span class="variable">$true</span>) &#123;</span><br><span class="line">            <span class="built_in">Copy-Item</span> <span class="literal">-Path</span> <span class="variable">$sourceFile</span> <span class="literal">-Destination</span> <span class="variable">$targetFile</span></span><br><span class="line">            <span class="string">&quot;Copy <span class="variable">$_</span> To <span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">Move-Item</span> <span class="literal">-Path</span> <span class="variable">$sourceFile</span> <span class="literal">-Destination</span> <span class="variable">$targetFile</span></span><br><span class="line">            <span class="string">&quot;Move <span class="variable">$_</span> To <span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$global:syncFiles</span> = <span class="variable">$global:syncFiles</span> + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#判斷來源資料夾是否存在</span></span><br><span class="line"><span class="keyword">if</span> ((<span class="built_in">Test-Path</span> <span class="literal">-LiteralPath</span> <span class="variable">$sourcePath</span>) <span class="operator">-eq</span> <span class="variable">$false</span>) &#123;</span><br><span class="line">    <span class="variable">$result</span> = show_message <span class="literal">-msgBody</span> <span class="string">&quot;請檢查來源資料夾是否存在&quot;</span> <span class="literal">-msgTitle</span> <span class="string">&quot;警告&quot;</span> <span class="literal">-msgImage</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#判斷網路資料夾是否已存在</span></span><br><span class="line"><span class="keyword">if</span> ((<span class="built_in">Test-Path</span> <span class="literal">-LiteralPath</span> <span class="variable">$smbPath</span>) <span class="operator">-eq</span> <span class="variable">$true</span>) &#123;</span><br><span class="line">    <span class="variable">$targetBasePath</span> = <span class="variable">$smbPath</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#迴圈處理檔案</span></span><br><span class="line"><span class="built_in">Get-ChildItem</span> <span class="literal">-LiteralPath</span> <span class="variable">$sourcePath</span> | <span class="built_in">ForEach-Object</span> &#123;</span><br><span class="line">    <span class="variable">$date</span> = <span class="string">&quot;&#123;0:yyyy_MM_dd&#125;&quot;</span> <span class="operator">-f</span> <span class="variable">$_</span>.LastWriteTime</span><br><span class="line">    <span class="variable">$year</span> = <span class="variable">$date</span>.Substring(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#處理JPG Files</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$jpgFiles</span> <span class="operator">-contains</span> <span class="variable">$_</span>.Extension) &#123;</span><br><span class="line">        <span class="variable">$targetPath</span> = <span class="string">&quot;<span class="variable">$targetBasePath</span>\照片\JPG\<span class="variable">$year</span>\<span class="variable">$date</span>&quot;</span></span><br><span class="line">        move_file <span class="literal">-SourceFile</span> <span class="variable">$_</span>.FullName <span class="literal">-TargetFile</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span> <span class="literal">-KeepSource</span> <span class="variable">$keepSourceFile</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#處理Raw Files</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$rawFiles</span> <span class="operator">-contains</span> <span class="variable">$_</span>.Extension) &#123;</span><br><span class="line">        <span class="variable">$targetPath</span> = <span class="string">&quot;<span class="variable">$targetBasePath</span>\照片\RAW\<span class="variable">$year</span>\<span class="variable">$date</span>&quot;</span></span><br><span class="line">        move_file <span class="literal">-SourceFile</span> <span class="variable">$_</span>.FullName <span class="literal">-TargetFile</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span> <span class="literal">-KeepSource</span> <span class="variable">$keepSourceFile</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#處理Video Files</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$videoFiles</span> <span class="operator">-contains</span> <span class="variable">$_</span>.Extension) &#123;</span><br><span class="line">        <span class="variable">$targetPath</span> = <span class="string">&quot;<span class="variable">$targetBasePath</span>\影片\<span class="variable">$date</span>&quot;</span></span><br><span class="line">        move_file <span class="literal">-SourceFile</span> <span class="variable">$_</span>.FullName <span class="literal">-TargetFile</span> <span class="string">&quot;<span class="variable">$targetPath</span>\<span class="variable">$_</span>&quot;</span> <span class="literal">-KeepSource</span> <span class="variable">$keepSourceFile</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$syncFiles</span> <span class="operator">-gt</span> <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable">$result</span> = show_message <span class="literal">-msgBody</span> <span class="string">&quot;本次同步 <span class="variable">$syncFiles</span> 個檔案&quot;</span> <span class="literal">-msgTitle</span> <span class="string">&quot;資訊&quot;</span> <span class="literal">-msgButton</span> <span class="string">&quot;OK&quot;</span> <span class="literal">-msgImage</span> <span class="string">&quot;Info&quot;</span></span><br><span class="line">    <span class="comment">#開啟目的資料夾</span></span><br><span class="line">    explorer.exe <span class="variable">$targetBasePath</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">$result</span> = show_message <span class="literal">-msgBody</span> <span class="string">&quot;本次無異動，檔案皆已於前次作業同步完畢，請問是否開啟目的資料夾?&quot;</span> <span class="literal">-msgTitle</span> <span class="string">&quot;詢問&quot;</span> <span class="literal">-msgButton</span> <span class="string">&quot;YesNo&quot;</span> <span class="literal">-msgImage</span> <span class="string">&quot;Question&quot;</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$result</span> <span class="operator">-eq</span> <span class="string">&quot;Yes&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">#開啟目的資料夾</span></span><br><span class="line">        explorer.exe <span class="variable">$targetBasePath</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/powershell/" rel="tag"># PowerShell</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/powershell/20221121/1974820602/" rel="prev" title="PowerShell 影像整理法(小改版)">
+                  <i class="fa fa-chevron-left"></i> PowerShell 影像整理法(小改版)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Noke Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
